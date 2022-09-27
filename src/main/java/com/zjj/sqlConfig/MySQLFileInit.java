@@ -21,8 +21,10 @@ import java.util.Properties;
 // 没有的话就指定准备好的sql文件
 // 注
 // 因为这个功能很单一（都是static方法）,所以没有进行单例模式的实现
-// 注意全程想要连接的数据库与sql文件的前缀名要相同
-// 注意数据库配置文件默认是db.properties
+// 想要连接的数据库与sql文件的前缀名要相同
+// 数据库配置文件默认是db.properties
+// db.properties里各个属性默认是
+// jdbc.driver jdbc.url jdbc.username jdbc.password
 public class MySQLFileInit {
 
     public static void run(){
@@ -59,10 +61,10 @@ public class MySQLFileInit {
             e.printStackTrace();
         }
 
-        driver = properties.getProperty("driver");
-        url = properties.getProperty("url");
-        username = properties.getProperty("username");
-        password = properties.getProperty("password");
+        driver = properties.getProperty("jdbc.driver");
+        url = properties.getProperty("jdbc.url");
+        username = properties.getProperty("jdbc.username");
+        password = properties.getProperty("jdbc.password");
         // 看数据库是否在mysql中存在，不存在就创建
         checkDatabase();
     }
