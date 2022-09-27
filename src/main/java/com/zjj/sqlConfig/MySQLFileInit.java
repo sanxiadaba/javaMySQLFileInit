@@ -19,8 +19,10 @@ import java.util.Properties;
 // 也就是,只要在其他模块创建MySQLFileInit类或者调用run方法
 // 也就是触发类的加载,静态代码块里就会检查文件是否有指定的数据库连接
 // 没有的话就指定准备好的sql文件
-// 注：因为这个功能很单一（都是static方法）,所以没有进行单例模式的实现
+// 注
+// 因为这个功能很单一（都是static方法）,所以没有进行单例模式的实现
 // 注意全程想要连接的数据库与sql文件的前缀名要相同
+// 注意数据库配置文件默认是db.properties
 public class MySQLFileInit {
 
     public static void run(){
