@@ -123,11 +123,13 @@ public class MySQLFileInit {
             throw new RuntimeException(e);
         }
         try (Connection connection=DriverManager.getConnection(url.replace(databaseName,"mysql"), username, password)){
+            connection.setAutoCommit(false);
             Statement st = connection.createStatement();
             for (String sql : sqls) {
-                st.addBatch(sql);
+                System.out.println(sql);
+                st.execute(sql);
+                connection.commit();
             }
-            st.executeBatch();
         } catch (Exception e) {
             e.printStackTrace();
         }
